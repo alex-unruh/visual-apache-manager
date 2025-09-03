@@ -1,0 +1,393 @@
+// app global css in SCSS form
+
+// Tema escuro personalizado estilo Postman
+:root {
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #2a2a2a;
+  --bg-tertiary: #3a3a3a;
+  --text-primary: #ffffff;
+  --text-secondary: #b0b0b0;
+  --text-muted: #808080;
+  --accent-orange: #ff6c37;
+  --accent-blue: #4a90e2;
+  --border-color: #404040;
+  --success: #27ae60;
+  --warning: #f39c12;
+  --error: #e74c3c;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: 'Roboto', sans-serif;
+}
+
+// Customização do Quasar para tema escuro
+.q-layout {
+  background-color: var(--bg-primary);
+}
+
+.q-header {
+  background-color: var(--bg-secondary) !important;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.q-drawer {
+  background-color: var(--bg-secondary) !important;
+  border-right: 1px solid var(--border-color);
+}
+
+.q-page {
+  background-color: var(--bg-primary);
+  padding-right: 24px !important;
+}
+
+// Cards e containers
+.q-card {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+}
+
+// Botões
+.q-btn {
+  border-radius: 6px;
+  font-weight: 500;
+  text-transform: none;
+}
+
+.q-btn--primary {
+  background-color: var(--accent-orange) !important;
+  color: white !important;
+}
+
+.q-btn--secondary {
+  background-color: var(--accent-blue) !important;
+  color: white !important;
+}
+
+// Inputs
+.q-field {
+  margin-bottom: 16px;
+  
+  .q-field__control {
+    background-color: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    color: var(--text-primary);
+  }
+  
+  .q-field__label {
+    color: var(--text-secondary) !important;
+  }
+  
+  .q-field__native {
+    color: var(--text-primary) !important;
+  }
+  
+  .q-field__append .q-icon {
+    color: var(--text-secondary) !important;
+  }
+}
+
+// Tabelas
+.q-table {
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  
+  .q-table__top {
+    background-color: var(--bg-tertiary);
+    border-bottom: 1px solid var(--border-color);
+  }
+  
+  thead tr {
+    background-color: var(--bg-tertiary);
+  }
+  
+  tbody tr:hover {
+    background-color: var(--bg-tertiary);
+  }
+}
+
+// Listas
+.q-list {
+  background-color: var(--bg-secondary);
+  
+  .q-item {
+    color: var(--text-primary);
+    
+    &:hover {
+      background-color: var(--bg-tertiary);
+    }
+    
+    &.q-item--active {
+      background-color: var(--accent-orange);
+      color: white;
+    }
+  }
+}
+
+// Separadores
+.q-separator {
+  background-color: var(--border-color);
+}
+
+// Scrollbars personalizadas
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+// Classes utilitárias
+.text-primary {
+  color: var(--text-primary) !important;
+}
+
+.text-secondary {
+  color: var(--text-secondary) !important;
+}
+
+.text-muted {
+  color: var(--text-muted) !important;
+}
+
+.text-accent {
+  color: var(--accent-orange) !important;
+}
+
+// Fix dark text on dark background
+.q-item__label,
+.q-item__section,
+.q-chip__content,
+.q-tab__label,
+.q-table th,
+.q-table td {
+  color: var(--text-primary) !important;
+}
+
+.q-table__title {
+  color: var(--text-primary) !important;
+}
+
+// Dialog styling
+.q-dialog__inner {
+  .q-card {
+    background: var(--bg-secondary) !important;
+    color: var(--text-primary) !important;
+  }
+  
+  .q-card__section {
+    color: var(--text-primary) !important;
+  }
+}
+
+// Form alignment
+.q-form {
+  .q-field {
+    margin-bottom: 20px;
+  }
+  
+  .row {
+    margin-bottom: 16px;
+  }
+}
+
+.bg-primary {
+  background-color: var(--bg-primary) !important;
+}
+
+.bg-secondary {
+  background-color: var(--bg-secondary) !important;
+}
+
+.bg-tertiary {
+  background-color: var(--bg-tertiary) !important;
+}
+
+// Animações suaves
+* {
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+// Status indicators
+.status-online {
+  color: var(--success);
+}
+
+.status-offline {
+  color: var(--error);
+}
+
+.status-warning {
+  color: var(--warning);
+}
+
+// Ensure text visibility on dark backgrounds
+.q-item__label,
+.q-table th,
+.q-table td,
+.q-dialog .q-card,
+.q-dialog .q-card-section {
+  color: #ffffff !important;
+}
+
+.q-table th {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.q-table tbody tr:hover {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+// Improve form layout and spacing
+.q-form {
+  .row {
+    margin-bottom: 16px;
+  }
+}
+
+// Better spacing for filter sections
+.q-page-container .q-page {
+  .row.q-gutter-md {
+    margin-bottom: 20px;
+  }
+}
+
+// Improve card spacing
+.q-card {
+  margin-bottom: 16px;
+}
+
+// Better visibility for labels and text
+.q-field__label,
+.q-field__control,
+.q-select__dropdown-icon,
+.q-chip__content {
+  color: #ffffff !important;
+}
+
+// Improve button visibility
+.q-btn {
+  &.q-btn--flat {
+    color: #ffffff !important;
+  }
+}
+
+// Better tab visibility
+.q-tab {
+  color: rgba(255, 255, 255, 0.7) !important;
+  
+  &.q-tab--active {
+    color: #ffffff !important;
+  }
+}
+
+// Improve expansion item visibility
+.q-expansion-item__content {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+// Force dark background for all form fields and dialogs
+.q-field--filled .q-field__control {
+  background-color: var(--bg-tertiary) !important;
+  color: var(--text-primary) !important;
+}
+
+.q-field--filled .q-field__control:before {
+  background-color: var(--bg-tertiary) !important;
+}
+
+.q-field--filled .q-field__control:after {
+  background-color: var(--accent-orange) !important;
+}
+
+// Ensure all input fields have dark background
+.q-input .q-field__control,
+.q-select .q-field__control,
+.q-textarea .q-field__control {
+  background-color: var(--bg-tertiary) !important;
+  color: var(--text-primary) !important;
+}
+
+// Force dark background for dialog cards
+.q-dialog .q-card {
+  background-color: var(--bg-secondary) !important;
+}
+
+// Ensure form fields in dialogs are dark
+.q-dialog .q-field--filled .q-field__control {
+  background-color: var(--bg-tertiary) !important;
+  color: var(--text-primary) !important;
+}
+
+// Override any white backgrounds
+.q-field__control {
+  background-color: var(--bg-tertiary) !important;
+}
+
+// Ensure textarea has dark background
+.q-field--auto-height .q-field__control,
+.q-field--textarea .q-field__control {
+  background-color: var(--bg-tertiary) !important;
+  color: var(--text-primary) !important;
+}
+
+// Force dark background for tab panels in dialogs
+.q-dialog .q-tab-panels,
+.q-dialog .q-tab-panel {
+  background-color: var(--bg-secondary) !important;
+}
+
+// Force dark background for all form elements in dialogs
+.q-dialog .q-field,
+.q-dialog .q-input,
+.q-dialog .q-select,
+.q-dialog .q-textarea {
+  .q-field__control {
+    background-color: var(--bg-tertiary) !important;
+    color: var(--text-primary) !important;
+  }
+}
+
+// Override any remaining white backgrounds
+.q-dialog * {
+  background-color: transparent !important;
+}
+
+.q-dialog .q-card,
+.q-dialog .q-card-section,
+.q-dialog .q-tab-panels,
+.q-dialog .q-tab-panel {
+  background-color: var(--bg-secondary) !important;
+}
+
+// Specific fix for form containers
+.q-dialog .q-form,
+.q-dialog .q-gutter-md {
+  background-color: transparent !important;
+}
+
+// Force all input controls to be dark
+.q-field__control,
+.q-field__control:before,
+.q-field__control:after {
+  background-color: var(--bg-tertiary) !important;
+}
+
+// Ensure tabs background is correct
+.q-tabs {
+  background-color: transparent !important;
+}
