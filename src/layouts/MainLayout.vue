@@ -37,28 +37,15 @@
             icon="power_settings_new"
             class="text-negative"
             @click="disconnectFromServer"
-            >
+          >
             <q-tooltip>Desconectar</q-tooltip>
           </q-btn>
-          <q-btn
-            flat
-            dense
-            round
-            icon="settings"
-            class="text-secondary"
-            @click="openSettings"
-          />
+          <q-btn flat dense round icon="settings" class="text-secondary" @click="openSettings" />
         </div>
       </q-toolbar>
     </q-header>
 
-    <q-drawer
-      v-model="leftDrawerOpen"
-      show-if-above
-      bordered
-      :width="280"
-      class="bg-secondary"
-    >
+    <q-drawer v-model="leftDrawerOpen" show-if-above bordered :width="280" class="bg-secondary">
       <div class="q-pa-md">
         <q-select
           v-model="selectedConnection"
@@ -76,13 +63,11 @@
         >
           <template v-slot:no-option>
             <q-item>
-              <q-item-section class="text-grey">
-                Nenhuma conexão configurada
-              </q-item-section>
+              <q-item-section class="text-grey"> Nenhuma conexão configurada </q-item-section>
             </q-item>
           </template>
         </q-select>
-        
+
         <q-btn
           color="primary"
           icon="add"
@@ -90,7 +75,7 @@
           class="full-width q-mb-md"
           @click="openConnectionDialog"
         />
-        
+
         <q-btn
           v-if="selectedConnection"
           color="negative"
@@ -105,9 +90,7 @@
       <q-separator />
 
       <q-list class="q-pt-md">
-        <q-item-label header class="text-secondary">
-          GERENCIAMENTO APACHE
-        </q-item-label>
+        <q-item-label header class="text-secondary"> GERENCIAMENTO APACHE </q-item-label>
 
         <q-item
           v-for="item in availableMenuItems"
@@ -131,9 +114,9 @@
             <q-icon name="lock" size="xs" class="text-grey-6" />
           </q-item-section>
         </q-item>
-        
+
         <q-separator v-if="!hasActiveConnection" class="q-my-md" />
-        
+
         <q-item v-if="!hasActiveConnection" class="q-mx-sm">
           <q-item-section>
             <q-item-label class="text-caption text-grey-6 text-center">
@@ -155,58 +138,53 @@
           <div class="text-h6 text-primary">Nova Conexão SSH</div>
         </q-card-section>
 
-        <q-card-section class="q-pt-none">
-          <q-form @submit="saveConnection" class="q-gutter-md">
-            <div class="row q-gutter-md">
-              <div class="col-md-6 col-sm-12">
+        <q-card-section class="q-py-none">
+          <q-form @submit="saveConnection">
+            <div class="col-12">
+              <div class="row q-col-gutter-x-md">
                 <q-input
+                  class="col-12"
                   v-model="newConnection.name"
                   label="Nome da Conexão"
                   filled
                   dense
-                  :rules="[val => !!val || 'Nome é obrigatório']"
+                  :rules="[(val) => !!val || 'Nome é obrigatório']"
                   dark
                 />
-              </div>
-              <div class="col-md-6 col-sm-12">
+
                 <q-input
+                  class="col-md-8"
                   v-model="newConnection.host"
                   label="Host/IP"
                   filled
                   dense
-                  :rules="[val => !!val || 'Host é obrigatório']"
+                  :rules="[(val) => !!val || 'Host é obrigatório']"
                   dark
                 />
-              </div>
-            </div>
-            
-            <div class="row q-gutter-md">
-              <div class="col-md-4 col-sm-12">
+
                 <q-input
+                  class="col-md-4"
                   v-model.number="newConnection.port"
                   label="Porta"
                   type="number"
                   filled
                   dense
-                  :rules="[val => !!val || 'Porta é obrigatória']"
+                  :rules="[(val) => !!val || 'Porta é obrigatória']"
                   dark
                 />
-              </div>
-              <div class="col-md-8 col-sm-12">
+
                 <q-input
+                  class="col-12"
                   v-model="newConnection.username"
                   label="Usuário"
                   filled
                   dense
-                  :rules="[val => !!val || 'Usuário é obrigatório']"
+                  :rules="[(val) => !!val || 'Usuário é obrigatório']"
                   dark
                 />
-              </div>
-            </div>
-            
-            <div class="row q-gutter-md">
-              <div class="col-12">
+
                 <q-input
+                  class="col-12"
                   v-model="newConnection.password"
                   label="Senha"
                   type="password"
@@ -247,7 +225,7 @@ const newConnection = ref({
   host: '',
   port: 22,
   username: '',
-  password: ''
+  password: '',
 })
 
 const menuItems = [
@@ -255,44 +233,44 @@ const menuItems = [
     title: 'Dashboard',
     caption: 'Visão geral do servidor',
     icon: 'dashboard',
-    route: '/'
+    route: '/',
   },
   {
     title: 'Sites Apache',
     caption: 'Gerenciar sites virtuais',
     icon: 'web',
-    route: '/sites'
+    route: '/sites',
   },
   {
     title: 'Módulos Apache',
     caption: 'Habilitar/desabilitar módulos',
     icon: 'extension',
-    route: '/modules'
+    route: '/modules',
   },
   {
     title: 'Versões PHP',
     caption: 'Gerenciar versões do PHP',
     icon: 'code',
-    route: '/php-versions'
+    route: '/php-versions',
   },
   {
     title: 'Extensões PHP',
     caption: 'Configurar extensões PHP',
     icon: 'settings_applications',
-    route: '/php-extensions'
+    route: '/php-extensions',
   },
   {
     title: 'Virtual Hosts',
     caption: 'Criar e editar virtual hosts',
     icon: 'dns',
-    route: '/virtual-hosts'
+    route: '/virtual-hosts',
   },
   {
     title: 'Logs',
     caption: 'Visualizar logs do sistema',
     icon: 'description',
-    route: '/logs'
-  }
+    route: '/logs',
+  },
 ]
 
 const currentConnection = computed(() => {
@@ -310,7 +288,7 @@ const availableMenuItems = computed(() => {
     return menuItems
   }
   // Quando não há conexão ativa, mostrar apenas o dashboard
-  return menuItems.filter(item => item.route === '/')
+  return menuItems.filter((item) => item.route === '/')
 })
 
 function toggleLeftDrawer() {
@@ -323,7 +301,7 @@ function openConnectionDialog() {
     host: '',
     port: 22,
     username: '',
-    password: ''
+    password: '',
   }
   showConnectionDialog.value = true
 }
@@ -347,10 +325,10 @@ async function testConnection() {
   try {
     console.log('Iniciando teste de conexão...')
     console.log('Dados da conexão:', newConnection.value)
-    
+
     if (window.electronAPI) {
       console.log('electronAPI disponível, chamando testConnection...')
-      
+
       // Criar uma cópia limpa do objeto para evitar problemas de serialização
       const connectionData = {
         name: newConnection.value.name,
@@ -358,36 +336,36 @@ async function testConnection() {
         port: newConnection.value.port,
         username: newConnection.value.username,
         password: newConnection.value.password,
-        private_key: newConnection.value.private_key || null
+        private_key: newConnection.value.private_key || null,
       }
-      
+
       console.log('Dados limpos para envio:', connectionData)
       const result = await window.electronAPI.testConnection(connectionData)
       console.log('Resultado recebido:', result)
-      
+
       if (result.success) {
         $q.notify({
           type: 'positive',
-          message: 'Conexão testada com sucesso!'
+          message: 'Conexão testada com sucesso!',
         })
       } else {
         $q.notify({
           type: 'negative',
-          message: `Erro na conexão: ${result.message}`
+          message: `Erro na conexão: ${result.message}`,
         })
       }
     } else {
       console.error('electronAPI não está disponível')
       $q.notify({
         type: 'negative',
-        message: 'API do Electron não disponível'
+        message: 'API do Electron não disponível',
       })
     }
   } catch (error) {
     console.error('Erro capturado no frontend:', error)
     $q.notify({
       type: 'negative',
-      message: `Erro ao testar conexão: ${error.message}`
+      message: `Erro ao testar conexão: ${error.message}`,
     })
   } finally {
     testing.value = false
@@ -406,22 +384,22 @@ async function saveConnection() {
         port: newConnection.value.port,
         username: newConnection.value.username,
         password: newConnection.value.password,
-        private_key: newConnection.value.private_key || null
+        private_key: newConnection.value.private_key || null,
       }
-      
+
       await window.electronAPI.saveConnection(connectionData)
       await loadConnections()
       closeConnectionDialog()
       $q.notify({
         type: 'positive',
-        message: 'Conexão salva com sucesso!'
+        message: 'Conexão salva com sucesso!',
       })
     }
   } catch (error) {
     console.error('Erro ao salvar conexão:', error)
     $q.notify({
       type: 'negative',
-      message: `Erro ao salvar conexão: ${error.message}`
+      message: `Erro ao salvar conexão: ${error.message}`,
     })
   } finally {
     saving.value = false
@@ -440,13 +418,13 @@ async function onConnectionChange(connection) {
 
 async function connectToServer(connection) {
   if (!connection) return
-  
+
   connectionStatus.value = 'connecting'
   currentConnection.value = connection
-  
+
   try {
     console.log('Conectando ao servidor:', connection.name)
-    
+
     // Testar a conexão primeiro
     const connectionData = {
       name: connection.name,
@@ -454,42 +432,44 @@ async function connectToServer(connection) {
       port: connection.port,
       username: connection.username,
       password: connection.password,
-      private_key: connection.private_key || null
+      private_key: connection.private_key || null,
     }
-    
+
     const result = await window.electronAPI.testConnection(connectionData)
-    
+
     if (result.success) {
       connectionStatus.value = 'connected'
-      
+
       // Definir conexão ativa globalmente
       window.currentActiveConnection = connection
-      
+
       $q.notify({
         type: 'positive',
-        message: `Conectado ao servidor ${connection.name}`
+        message: `Conectado ao servidor ${connection.name}`,
       })
-      
+
       // Emitir evento para outras páginas saberem que a conexão mudou
-      window.dispatchEvent(new CustomEvent('connection-changed', { 
-        detail: { 
-          connection: {
-            id: connection.id,
-            name: connection.name,
-            host: connection.host,
-            port: connection.port,
-            username: connection.username
-          }, 
-          status: 'connected' 
-        } 
-      }))
+      window.dispatchEvent(
+        new CustomEvent('connection-changed', {
+          detail: {
+            connection: {
+              id: connection.id,
+              name: connection.name,
+              host: connection.host,
+              port: connection.port,
+              username: connection.username,
+            },
+            status: 'connected',
+          },
+        }),
+      )
     } else {
       connectionStatus.value = 'disconnected'
       currentConnection.value = null
       window.currentActiveConnection = null
       $q.notify({
         type: 'negative',
-        message: `Erro ao conectar: ${result.message}`
+        message: `Erro ao conectar: ${result.message}`,
       })
     }
   } catch (error) {
@@ -499,7 +479,7 @@ async function connectToServer(connection) {
     window.currentActiveConnection = null
     $q.notify({
       type: 'negative',
-      message: `Erro ao conectar: ${error.message}`
+      message: `Erro ao conectar: ${error.message}`,
     })
   }
 }
@@ -513,27 +493,29 @@ function disconnectFromServer() {
   selectedConnection.value = null
   connectionStatus.value = 'disconnected'
   window.currentActiveConnection = null
-  
+
   // Emitir evento para outras páginas saberem que a conexão foi desconectada
-  window.dispatchEvent(new CustomEvent('connection-changed', { 
-    detail: { connection: null, status: 'disconnected' } 
-  }))
-  
+  window.dispatchEvent(
+    new CustomEvent('connection-changed', {
+      detail: { connection: null, status: 'disconnected' },
+    }),
+  )
+
   $q.notify({
     type: 'info',
-    message: 'Desconectado do servidor'
+    message: 'Desconectado do servidor',
   })
 }
 
 function confirmDeleteConnection() {
   const connection = currentConnection.value
   if (!connection) return
-  
+
   $q.dialog({
     title: 'Confirmar Exclusão',
     message: `Tem certeza que deseja excluir a conexão "${connection.name}"?`,
     cancel: true,
-    persistent: true
+    persistent: true,
   }).onOk(async () => {
     await deleteConnection(connection.id)
   })
@@ -543,27 +525,27 @@ async function deleteConnection(connectionId) {
   try {
     if (window.electronAPI) {
       await window.electronAPI.deleteConnection(connectionId)
-      
+
       // Recarregar lista de conexões
       await loadConnections()
-      
+
       // Se a conexão excluída era a selecionada, limpar seleção
-       if (selectedConnection.value?.id === connectionId) {
-         selectedConnection.value = null
-         connectionStatus.value = 'disconnected'
-         window.currentActiveConnection = null
-       }
-      
+      if (selectedConnection.value?.id === connectionId) {
+        selectedConnection.value = null
+        connectionStatus.value = 'disconnected'
+        window.currentActiveConnection = null
+      }
+
       $q.notify({
         type: 'positive',
-        message: 'Conexão excluída com sucesso!'
+        message: 'Conexão excluída com sucesso!',
       })
     }
   } catch (error) {
     console.error('Erro ao excluir conexão:', error)
     $q.notify({
       type: 'negative',
-      message: 'Erro ao excluir conexão: ' + error.message
+      message: 'Erro ao excluir conexão: ' + error.message,
     })
   }
 }
